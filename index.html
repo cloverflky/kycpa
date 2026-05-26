@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>CPA备考枢纽 · 全科完整笔记 | 财管+战略完整版 | 原样呈现</title>
+    <title>学习笔记目录</title>
     <style>
         * {
             margin: 0;
@@ -12,336 +12,364 @@
         }
 
         body {
-            background-color: #f1f4f9;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            line-height: 1.5;
-            color: #1a2c3e;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding: 20px;
+            color: #1a1a2e;
         }
 
-        .app {
-            display: flex;
-            min-height: 100vh;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        /* 侧边栏 - 科目导航 */
-        .sidebar {
-            width: 320px;
-            background: linear-gradient(180deg, #0b2b35 0%, #123e4a 100%);
-            color: #e9f1f4;
-            flex-shrink: 0;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
-            z-index: 10;
-            transition: all 0.2s;
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .sidebar-header {
-            padding: 1.8rem 1.5rem 1rem;
-            border-bottom: 1px solid #2c5a68;
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
         }
 
-        .sidebar-header h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #f9d56e, #ffb347);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
         }
 
-        .sidebar-header p {
-            font-size: 0.75rem;
-            opacity: 0.75;
-            margin-top: 6px;
+        /* 搜索框 */
+        .search-box {
+            margin-bottom: 20px;
         }
 
-        .nav-category {
-            margin: 1.2rem 0 0.2rem;
-            padding: 0 1.2rem;
-            font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ffcd94;
-        }
-
-        .subject-list {
-            list-style: none;
-            margin: 0;
-            padding: 0 0.75rem 1.5rem;
-        }
-
-        .subject-item {
-            margin: 6px 0;
-            border-radius: 28px;
-        }
-
-        .subject-btn {
+        .search-box input {
             width: 100%;
-            background: transparent;
-            border: none;
-            text-align: left;
-            padding: 10px 18px;
+            padding: 14px 18px;
             font-size: 1rem;
-            font-weight: 500;
-            color: #e4f0f5;
-            border-radius: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 50px;
+            background: white;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .search-box input:focus {
+            border-color: #667eea;
+            box-shadow: 0 2px 12px rgba(102,126,234,0.2);
+        }
+
+        /* 分类卡片 */
+        .category {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .category-header {
+            background: #f8f9fc;
+            padding: 16px 20px;
+            border-bottom: 2px solid #eef2f7;
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .category-header:hover {
+            background: #f0f2f5;
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: 0.2s;
         }
 
-        .subject-btn:hover {
-            background: #2a5f6e;
-            color: white;
+        .category-title .emoji {
+            font-size: 1.5rem;
         }
 
-        .subject-active {
-            background: #ffb347;
-            color: #1e2a2f;
-            font-weight: 600;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: #888;
+            transition: transform 0.3s;
         }
 
-        .subject-active:hover {
-            background: #ffa01e;
+        .category-header.collapsed .toggle-icon {
+            transform: rotate(-90deg);
         }
 
-        .chapters-container {
-            margin-left: 2rem;
-            margin-top: 4px;
-            margin-bottom: 8px;
+        /* 文件列表 */
+        .file-list {
+            list-style: none;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .file-list.collapsed {
             display: none;
-            flex-direction: column;
-            gap: 5px;
         }
 
-        .chapters-container.show {
+        .file-list li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .file-list li:last-child {
+            border-bottom: none;
+        }
+
+        .file-list a {
             display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            transition: background 0.2s;
         }
 
-        .chapter-link {
-            background: rgba(255, 255, 255, 0.08);
-            border: none;
-            text-align: left;
-            padding: 7px 16px;
-            border-radius: 24px;
-            font-size: 0.85rem;
-            color: #d4eaf0;
-            cursor: pointer;
-            transition: 0.1s;
-            font-weight: 450;
+        .file-list a:hover {
+            background: #f5f3ff;
+            padding-left: 26px;
         }
 
-        .chapter-link:hover {
-            background: #3c7a8a;
-            color: white;
+        .file-list .file-icon {
+            font-size: 1.2rem;
+            opacity: 0.7;
         }
 
-        .chapter-active {
-            background: #f5bc70;
-            color: #1e3b41;
-            font-weight: 500;
-        }
-
-        /* 右侧主内容区 */
-        .main-content {
+        .file-list .file-name {
             flex: 1;
-            background-color: #f5f9fe;
-            padding: 1.5rem 2rem;
-            overflow-x: auto;
         }
 
-        .content-pane {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: transparent;
-            border-radius: 32px;
-            min-height: 85vh;
+        .file-list .badge {
+            font-size: 0.7rem;
+            color: #888;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 20px;
         }
 
-        .note-iframe {
-            width: 100%;
-            border: none;
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
-            display: block;
-            transition: height 0.1s ease;
-        }
-
-        .placeholder-card {
-            padding: 3rem 2rem;
+        /* 空状态 */
+        .empty-message {
+            padding: 20px;
             text-align: center;
-            background: #ffffff;
-            border-radius: 32px;
-            color: #4b6e86;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            color: #999;
+            font-style: italic;
         }
 
-        footer {
+        /* 底部统计 */
+        .footer {
             text-align: center;
-            font-size: 0.75rem;
-            margin-top: 2rem;
-            color: #7c8f9c;
+            padding: 20px;
+            color: #888;
+            font-size: 0.8rem;
         }
 
-        @media (max-width: 780px) {
-            .sidebar {
-                width: 270px;
+        /* 手机适配 */
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
             }
-            .main-content {
-                padding: 1rem;
+            .header {
+                padding: 20px;
             }
-            .subject-btn {
-                font-size: 0.9rem;
-                padding: 8px 12px;
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            .category-title {
+                font-size: 1.1rem;
+            }
+            .file-list a {
+                padding: 12px 16px;
             }
         }
     </style>
 </head>
 <body>
-<div class="app">
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <h2>📚 CPA 复习中枢</h2>
-            <p>全科笔记 · 财管/战略完整版<br>教材原文+考点案例</p>
-        </div>
-        <div class="nav-category">📖 考试科目</div>
-        <ul class="subject-list" id="subjectList"></ul>
-        <div style="padding: 1rem 1.2rem; font-size: 0.7rem; border-top: 1px solid #2a5f6b; margin-top: 1rem;">
-            <span>✅ 基于注协教材 & 民法典 · 原样呈现</span>
-        </div>
-    </aside>
+<div class="container">
+    <div class="header">
+        <h1>📚 CPA学习笔记库</h1>
+        <p>CPA 备考 · 点击任意笔记开始阅读</p>
+    </div>
 
-    <main class="main-content">
-        <div id="contentArea" class="content-pane">
-            <div class="placeholder-card">
-                <div class="placeholder-icon" style="font-size: 3rem;">📖</div>
-                <h3>欢迎进入CPA知识中枢</h3>
-                <p style="margin-top: 12px;">请从左侧选择科目 → 展开章节，点击任意笔记即可原样浏览完整内容。</p>
-                <p style="margin-top: 8px; font-size: 0.85rem;">已完整收录：经济法物权法 · 战略风险应对（13类运营风险）· 财管资本成本（公式/模型/WACC）</p>
-            </div>
-        </div>
-        <footer>© CPA第一轮复习 · 全科笔记系统 | 内容基于官方教材整理，100%原始呈现</footer>
-    </main>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 搜索笔记标题... (输入01、02或关键字)">
+    </div>
+
+    <div id="categoriesContainer"></div>
+    <div class="footer" id="footer"></div>
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // 完整笔记库：经济法（物权完整）、战略（完整版案例+13类运营风险）、财管（资本成本完整公式表）
-    // 会计/税法/审计 友好占位提示
-    // 使用 Blob + iframe.src 技术保证完整HTML不丢失任何样式/内容
-    // --------------------------------------------------------------
-    
-    const NOTES_DB = {
-        "经济法": {
-            "物权法律制度": `<!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CPA经济法·物权法律制度 | 第一轮知识笔记</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{background-color:#f5f7fb;font-family:system-ui,'Segoe UI',Roboto,sans-serif;line-height:1.55;color:#1e2a3e;padding:2rem 1rem;}.container{max-width:1200px;margin:0 auto;background:white;border-radius:28px;box-shadow:0 20px 35px -12px rgba(0,0,0,0.1);overflow:hidden;padding:2rem 2rem 2.5rem;}h1{font-size:2rem;border-left:6px solid #2c5f8a;padding-left:1rem;margin-bottom:0.35rem;font-weight:600;}.sub{color:#4b6a8b;margin-bottom:2rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;}h2{font-size:1.6rem;margin-top:1.8rem;margin-bottom:1rem;font-weight:600;border-bottom:2px solid #cbdde9;}h3{font-size:1.25rem;margin:1.2rem 0 0.6rem 0;font-weight:600;color:#1e4663;border-left:4px solid #3b82b6;padding-left:0.75rem;}.card-note{background:#f8fafc;border-left:5px solid #3b82b6;padding:0.8rem 1.2rem;margin:1rem 0;border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,0.03);}table{width:100%;border-collapse:collapse;margin:1.2rem 0;background:#ffffff;border-radius:16px;overflow:hidden;}th{background-color:#eef3fa;font-weight:600;padding:10px 12px;border:1px solid #dce5ec;}td{padding:10px 12px;border:1px solid #e6edf2;}.case-block{background:#fef9e6;border-left:5px solid #e6a017;padding:1rem 1.4rem;margin:1.2rem 0;border-radius:20px;}.highlight{background-color:#eef2ff;padding:0.15rem 0.3rem;border-radius:8px;font-weight:500;color:#1e40af;}.badge{background:#d4e6f1;color:#1e4663;border-radius:30px;font-size:0.7rem;padding:0.2rem 0.6rem;display:inline-block;}footer{margin-top:2rem;text-align:center;font-size:0.75rem;color:#6c86a3;border-top:1px solid #e2edf2;padding-top:1.2rem;}</style></head><body><div class="container"><h1>📘 物权法律制度 · 完整知识笔记</h1><div class="sub"><span>📌 依据2025年CPA考试大纲 & 《民法典》物权编 | 完整收录教材案例+司法解释</span></div><h2>一、物权法律制度概述</h2><h3>1. 物的概念与种类</h3><div class="card-note"><p>✅ <strong>物权法上的物</strong>：有体物，具备有体性+可支配性+在人的身体之外。<br>📖 重要分类：动产/不动产；主物与从物（从物随主物）；原物与孳息（天然孳息归所有权人/用益物权人）。</p></div><div class="case-block"><div class="case-title">📖 教材案例·原物孳息归属</div><p>《民法典》第321条：<span class="highlight">天然孳息，由所有权人取得；既有所有权人又有用益物权人的，由用益物权人取得。</span>甲将果园承包给乙经营，果实由乙取得。</p></div><h3>2. 物权三大原则</h3><table><thead><tr><th>原则</th><th>核心内容</th></tr></thead><tbody><tr><td>物权法定</td><td>种类和内容由法律规定，违反种类法定→物权创设无效，但合同可能有效。</td></tr><tr><td>客体特定</td><td>一物一权，一个独立物上只能存在一个所有权。</td></tr><tr><td>公示原则</td><td>动产交付，不动产登记。</td></tr></tbody></table><h2>二、物权变动（★★★★★）</h2><div class="card-note"><p>基于法律行为：动产交付生效，不动产登记生效。例外：动产抵押权、地役权合同生效设立（登记对抗）。<br>非基于法律行为：继承、合法建造、法院判决等取得物权，未登记不得处分。</p></div><div class="case-block"><div class="case-title">🏠 非基于法律行为案例</div><p>乙继承甲住宅，自继承开始时取得所有权；转让前必须先登记至乙名下再过户给丙。</p></div><h3>交付的四种形态</h3><table><thead><tr><th>交付方式</th><th>生效时点</th></tr></thead><tbody><tr><td>现实交付</td><td>实际交付时</td></tr><tr><td>简易交付</td><td>法律行为生效时（受让人已占有）</td></tr><tr><td>指示交付</td><td>转让返还原物请求权协议生效时</td></tr><tr><td>占有改定</td><td>约定生效时（出卖人继续占有）</td></tr></tbody></table><h2>三、善意取得制度</h2><div class="card-note"><p>构成要件：无权处分 + 受让人善意 + 合理价格转让 + 动产交付/不动产登记。遗失物、盗窃物原则上不适用善意取得。</p></div><div class="case-block"><div class="case-title">💎 遗失物不适用善意取得</div><p>乙拾得甲丢失的手机，以市场价出让给丙，丙不构成善意取得，甲有权请求返还原物。</p></div><h2>四、担保物权（超级优先权）</h2><div class="card-note"><p>动产抵押超级优先权：价款抵押权在标的物交付后10日内办理抵押登记，优先于其他担保物权（留置权除外）。</p></div><div class="case-block"><div class="case-title">⚡ 超级优先权案例</div><p>汽车店为担保价款债权订立抵押合同并于交付后10日内登记 → 优先于其他抵押权人。</p></div><footer>完整版涵盖物权变动、共有、善意取得、抵押权顺位等全部高频考点。</footer></div></body></html>`
+    // ============================================================
+    // 🔧 配置区域：按你的文件夹结构修改这里！
+    // ============================================================
+    const categories = [
+        {
+            name: "财管",
+            emoji: "📊",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html",
+                "04 资本成本.html",
+                "05 投资项目资本预算.html"
+            ]
         },
-        "战略": {
-            "企业面对的主要风险与应对": `<!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CPA战略·第八章 企业面对的主要风险与应对 | 完整版+13类运营风险</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{background:#f5f7fb;font-family:'Segoe UI',Roboto,sans-serif;line-height:1.55;color:#1e2a3e;padding:2rem 1rem;}.container{max-width:1350px;margin:0 auto;background:white;border-radius:32px;overflow:hidden;padding:2rem 2rem 2rem;box-shadow:0 20px 35px -12px rgba(0,0,0,0.1);}.header{background:linear-gradient(135deg,#0b2b3b,#1a4a5f);color:white;padding:1.5rem 2rem;border-radius:24px;margin-bottom:1.8rem;}.header h1{font-size:1.8rem;}.badge{display:inline-block;background:#ffb347;color:#1e2a3a;padding:0.2rem 0.8rem;border-radius:30px;font-size:0.8rem;margin-top:0.5rem;}.case-block{background:#fef7e0;border-left:6px solid #d97706;padding:1rem 1.5rem;margin:1.2rem 0;border-radius:20px;}.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin:1.2rem 0;}.card{background:#f9fafc;border-radius:20px;padding:1rem;border:1px solid #e9edf2;box-shadow:0 1px 2px rgba(0,0,0,0.02);}.risk-list{list-style:none;padding-left:1rem;}.highlight{background:#fff0db;padding:0 2px;border-radius:4px;color:#b45309;font-weight:500;}h2{border-left:5px solid #ffb347;padding-left:1rem;margin:1.5rem 0 0.8rem;color:#1a4a5f;}h3{margin:0.8rem 0 0.4rem;color:#2c6280;}</style></head><body><div class="container"><div class="header"><h1>第八章 企业面对的主要风险与应对（完整版）</h1><div class="badge">战略风险 · 市场风险 · 财务风险 · 运营风险13类 · 法律合规风险 + 教材案例全收录</div></div><h2>一、战略风险与应对</h2><div class="grid-2"><div class="card"><strong>🎯 战略制定风险</strong><br>目标脱离实际/盲目多元化→应对：深入调研+可行性论证+战略规划报告</div><div class="card"><strong>⚠️ 战略实施风险</strong><br>人员/资源错配、信息不畅→配置专业团队+建立信息沟通机制+结构优化</div><div class="card"><strong>🔄 战略调整与复盘风险</strong><br>方向失准未及时调整→常态化复盘+闭环整改+科学审定方案</div></div><div class="case-block"><div class="case-title">【案例8.1 文天公司】</div><p>文天公司多元化盲目追逐高利润，未评估资源与行业周期，主业市占率从20%跌至不足1%，长期缺乏复盘。应对：聚焦主业，转让非主业板块，品牌年轻化，数字化运营。映射：战略制定、实施、复盘整改风险。</p></div><h2>二、市场风险与应对</h2><div class="grid-2"><div class="card"><strong>📊 市场趋势风险</strong><br>市场洞察不足/客户需求变动→深化研究+政策沟通+产品迭代机制</div><div class="card"><strong>📦 分销风险</strong><br>品牌管理、定价合规、窜货风险→动态优化营销渠道+信用管理+品牌战略</div></div><div class="case-block"><div class="case-title">【案例8.2 讯云体育】</div><p>竞争策略不足，年轻客户需求变化，线上价格战，经销商窜货。措施：收购品牌矩阵+运动科学实验室+供应链数字化+消费者数据平台+全渠道库存打通。</p></div><h2>三、财务风险与应对</h2><div class="grid-2"><div class="card"><strong>💰 筹资/预算风险</strong><br>资本结构不合理/预算超支→集体审批+预算执行实时监控</div><div class="card"><strong>📈 投资与报告风险</strong><br>决策失误/虚假报告→可行性研究+会计政策规范+投资后评价</div><div class="card"><strong>⚖️ 担保风险</strong><br>资信调查不深入→全面尽调+持续跟踪+分级授权</div></div><div class="case-block"><div class="case-title">【案例8.3 长果公司】</div><p>采购超预算未经审批、募集资金挪用、投资可转债无跟踪导致破产。应对：超预算周报制度+投资可行性模板+募集资金管理办法+财务报告规范。</p></div><h2>四、运营风险（13类子风险详解）</h2><div class="grid-2"><div class="card"><strong>🏢 组织架构</strong><br>治理结构虚设→集体决策，不相容职务分离，定期评估优化</div><div class="card"><strong>🧑‍🤝‍🧑 人力资源</strong><br>激励约束不当/退出机制缺失→规范选聘+长效培训+绩效考核</div><div class="card"><strong>🌿 社会责任</strong><br>安全生产/环保风险→安全体系+质量检验+环保监控</div><div class="card"><strong>🎨 企业文化</strong><br>诚信缺失/文化整合失败→价值观培育+评估改进</div><div class="card"><strong>📦 采购业务</strong><br>供应商选择不当/验收风险→动态准入+验收制度+付款审核</div><div class="card"><strong>🏭 资产管理</strong><br>存货积压/固定资产效能低→定期盘点+品牌管理+维保投保</div><div class="card"><strong>📢 销售业务</strong><br>客户信用缺失/回款不力→信用档案+应收账款分离催收</div><div class="card"><strong>🔬 研究与开发</strong><br>论证不充分/成果转化不足→可行性评审+知识产权保护</div><div class="card"><strong>🏗️ 工程项目</strong><br>招标舞弊/造价失控→招标合规+监理控制+竣工决算</div><div class="card"><strong>🤝 业务外包</strong><br>监控不严/外包决策不当→外包方评估+合同管理+验收结算</div><div class="card"><strong>📄 合同管理</strong><br>订立疏漏/纠纷处理不当→尽职调查+会审签约+履行台账</div><div class="card"><strong>📡 内部信息传递</strong><br>传递低效/泄密→反舞弊机制+保密分级+指标体系</div><div class="card"><strong>💻 信息系统</strong><br>规划不合理/安全风险→整体规划+权限控制+安全审计</div></div><div class="case-block"><div class="case-title">【案例8.4 广尚科技】</div><p>采购计划混乱，无信用管理部门，账款回收不力。应对：采购标准化+预算管理，供应商准入动态调整，信用台账与销售催收分离。采购成本降低、库存周转、回款率显著改善。</p></div><h2>五、法律风险和合规风险</h2><div class="grid-2"><div class="card"><strong>⚖️ 法律责任</strong><br>违法违规处罚、诉讼应对→健全问责+专业法务团队+纠纷评估</div><div class="card"><strong>📜 监管风险</strong><br>证券交易/反商业贿赂/财税合规→完善内控+合规培训+贸易预判</div></div><div class="case-block"><div class="case-title">【案例8.5 津味饮料】</div><p>财务造假22亿，罚款1.9亿，投资者集体诉讼。应对：开除高管重组董事会，聘请知名律所重组，职业道德培训，完善证券内控，聘请安永重新审计。映射：法律责任风险、行为规范风险、监管风险。</p></div><div style="background:#eef2fa;border-radius:20px;padding:1rem;margin-top:1.5rem;"><strong>📌 考试提示：</strong> 运营风险13类为主观题高频，必须结合案例灵活运用“表现—应对”框架；本章常与内控指引结合考查综合题。</div></div></body></html>`
+        {
+            name: "经济法",
+            emoji: "⚖️",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html",
+                "04.html"
+            ]
         },
-        "财管": {
-            "资本成本": `<!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CPA财管·第四章 资本成本 | 完整版公式+模型+计算详解</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{background:#f5f7fb;font-family:'Segoe UI',Roboto,sans-serif;line-height:1.55;color:#1e2a3e;padding:2rem 1rem;}.container{max-width:1280px;margin:0 auto;background:white;border-radius:28px;padding:2rem 2rem 2.5rem;box-shadow:0 20px 35px -12px rgba(0,0,0,0.1);}h1{font-size:2rem;border-left:6px solid #2b6e9e;padding-left:20px;margin-bottom:12px;background:linear-gradient(135deg,#1e3c72,#2b4c7c);-webkit-background-clip:text;background-clip:text;color:transparent;}.importance-high{background:#fee2e2;border-left:5px solid #ef4444;padding:10px 18px;border-radius:16px;margin:16px 0;font-weight:500;}.formula-card{background:#f1f5f9;border-radius:20px;padding:16px 20px;margin:16px 0;font-family:'Courier New',monospace;border:1px solid #cbdde9;overflow-x:auto;font-weight:600;}.grid-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px;margin:24px 0;}.card{background:#fff;border:1px solid #e2edf7;border-radius:20px;padding:18px;box-shadow:0 2px 6px rgba(0,0,0,0.02);}.card strong{color:#1e4a76;}table{width:100%;border-collapse:collapse;margin:20px 0;}th{background:#eef2ff;padding:10px;}td{padding:8px 12px;border-bottom:1px solid #e2e8f0;}.footer-note{background:#ecfdf5;padding:18px;border-radius:20px;margin-top:32px;text-align:center;}</style></head><body><div class="container"><h1>📘 第四章 资本成本 · 完整版知识点梳理</h1><div class="importance-high">★★★ 核心：资本成本是机会成本，也是投资必要报酬率；连接筹资与投资的桥梁。高频主观题：债务成本估计（到期收益率/风险调整法）、CAPM、股利增长模型、WACC计算。</div><h2>一、资本成本概述</h2><div class="grid-list"><div class="card"><strong>公司资本成本</strong><br>加权平均成本(WACC)：取决于无风险利率、经营风险溢价、财务风险溢价。<br>应用：投资决策(折现率)、筹资决策、业绩评价(EVA)。</div><div class="card"><strong>项目资本成本</strong><br>项目自身风险决定。若项目风险=公司平均风险，则项目成本=WACC；风险更高则成本更高。</div><div class="card"><strong>影响因素</strong><br>外部：无风险利率、市场风险溢价、税率。<br>内部：资本结构、投资政策（资产平均风险）。</div></div><h2>二、债务资本成本估计 ★★★</h2><div class="formula-card">税前债务成本 → 税后成本 = 税前 × (1-所得税率)</div><div class="grid-list"><div class="card"><strong>① 到期收益率法</strong><br>有上市债券：P0 = ∑利息/(1+rd)^t + 本金/(1+rd)^n，内插法求解rd。一年多次付息需换算有效年利率。</div><div class="card"><strong>② 可比公司法</strong><br>无上市债但有可比公司（同行业/规模/负债率），参照可比公司长期债券到期收益率。</div><div class="card"><strong>③ 风险调整法</strong><br>有信用评级：税前债务成本 = 无风险利率 + 信用风险补偿率（同级公司债收益-政府债收益平均值）。</div><div class="card"><strong>④ 财务比率法</strong><br>无评级无上市债 → 根据财务比率推断信用级别，再用风险调整法。</div></div><div class="importance-high">⚠️ 注意：承诺收益 vs 期望收益（财务困境时用期望收益）；历史成本是沉没成本，决策使用未来成本。</div><h2>三、普通股资本成本估计 ★★★</h2><h3>📐 1. 资本资产定价模型(CAPM)</h3><div class="formula-card">r<sub>s</sub> = r<sub>RF</sub> + β × (r<sub>m</sub> - r<sub>RF</sub>)</div><div class="grid-list"><div class="card"><strong>无风险利率</strong><br>通常选长期政府债券(10年期)到期收益率；名义利率（含通胀）。</div><div class="card"><strong>β系数</strong><br>历史期间5年以上，收益间隔常用周或月；β驱动因素：经营风险+财务风险。</div><div class="card"><strong>市场风险溢价</strong><br>历史数据几何平均法更优，涵盖经济周期。</div></div><h3>🌱 2. 股利增长模型</h3><div class="formula-card">r<sub>s</sub> = D<sub>1</sub> / P<sub>0</sub> + g &nbsp;&nbsp; (D<sub>1</sub>=D<sub>0</sub>×(1+g))</div><div class="grid-list"><div class="card"><strong>历史增长率</strong><br>几何平均增长率 g = (FV/PV)^(1/n) - 1，适合长期持有假设。</div><div class="card"><strong>可持续增长率</strong><br>不增发新股、经营效率不变：g = 期初权益预期净利率 × 利润留存率。</div><div class="card"><strong>分析师预测</strong><br>综合多位分析师预期，多阶段折现求rs最为可靠。</div></div><h3>⚖️ 3. 债券收益率风险调整模型</h3><div class="formula-card">r<sub>s</sub> = 税后债务成本 + 风险溢价（经验值3%~5%）</div><div class="importance-high">📌 考虑发行费用的普通股成本：r<sub>s</sub> = D<sub>1</sub> / [P<sub>0</sub>×(1-F)] + g ，外部股权成本高于留存收益。</div><h2>四、混合筹资资本成本（优先股&永续债）</h2><div class="grid-list"><div class="card"><strong>优先股</strong><br>分类为权益工具：r<sub>p</sub> = D<sub>p</sub> / [P<sub>p</sub>×(1-F)]<br>分类为金融负债：税前同公式，税后=税前×(1-T)。</div><div class="card"><strong>永续债</strong><br>r<sub>pd</sub> = I<sub>pd</sub> / [P<sub>pd</sub>×(1-F)]；利息税务处理依据分类。</div></div><h2>五、加权平均资本成本(WACC) ★★★</h2><div class="formula-card">WACC = (税后债务成本 × 债务权重) + (优先股成本 × 优先股权重) + (普通股成本 × 权益权重)</div><div class="grid-list"><div class="card"><strong>权重选择</strong><br>账面价值权重（易取得但可能扭曲）、市场价值权重（反映当前）、目标资本结构权重（最适合未来决策）。</div><div class="card"><strong>决策原则</strong><br>折现率与现金流量风险匹配，项目风险偏离公司平均风险时需调整项目资本成本。</div></div><div class="footer-note"><strong>🔥 高频计算提示：</strong> WACC计算需综合税后债务成本、权益成本；考试常用市场价值权重或目标权重。CAPM与股利增长模型结合考点密集，务必掌握β估计、无风险利率选择、g的预测方法。</div><div style="background:#eef2ff;border-radius:20px;padding:16px;margin-top:24px;"><p>📌 能力等级要求：资本成本概念(2级)、债务/普通股/混合筹资估计方法(3级)、WACC计算(2级)。历年真题分值约6~8分，计算题必考板块。</p></div></div></body></html>`
+        {
+            name: "会计",
+            emoji: "📑",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html",
+                "04.html",
+                "05.html",
+                "06.html"
+            ]
         },
-        "会计": { "待更新": "<div style='padding:3rem;text-align:center;background:#fef9e6;border-radius:32px;'><h3>📚 会计核心章节笔记</h3><p>存货、固定资产、长期股权投资、收入、合并财务报表等章节即将补充完整版。</p><p style='margin-top:1rem;'>📖 预计更新：金融资产、股份支付、租赁、所得税会计</p></div>" },
-        "税法": { "待更新": "<div style='padding:3rem;text-align:center;background:#fef9e6;border-radius:32px;'><h3>📚 税法笔记筹备中</h3><p>增值税、企业所得税、个人所得税、土地增值税等主体税种深度解析即将上线。</p><p>含最新税收优惠政策+计算例题</p></div>" },
-        "审计": { "待更新": "<div style='padding:3rem;text-align:center;background:#fef9e6;border-radius:32px;'><h3>📚 审计笔记</h3><p>风险评估、控制测试、实质性程序、审计报告、质量管理等模块即将补充完整版。</p><p>函证、存货监盘等重点循环</p></div>" }
-    };
-
-    const subjects = ["会计", "财管", "经济法", "战略", "税法", "审计"];
-    let activeSubject = "财管";
-    let activeChapterKey = "资本成本";
-
-    function renderSidebar() {
-        const container = document.getElementById("subjectList");
-        container.innerHTML = "";
-        subjects.forEach(sub => {
-            const li = document.createElement("li");
-            li.className = "subject-item";
-            const btn = document.createElement("button");
-            btn.className = `subject-btn ${activeSubject === sub ? 'subject-active' : ''}`;
-            btn.innerHTML = `<span>📁</span> ${sub}`;
-            btn.addEventListener("click", () => {
-                activeSubject = sub;
-                const chapters = NOTES_DB[sub] || { "笔记占位": "<div>内容待补充</div>" };
-                const firstChap = Object.keys(chapters)[0];
-                if (firstChap) activeChapterKey = firstChap;
-                else activeChapterKey = null;
-                renderSidebar();
-                if (activeChapterKey) renderContent(sub, activeChapterKey);
-                else document.getElementById("contentArea").innerHTML = `<div class="placeholder-card"><h3>暂无章节</h3></div>`;
-                document.querySelectorAll(".chapters-container").forEach(c => c.classList.remove("show"));
-                const target = document.getElementById(`chapters-${sub}`);
-                if(target) target.classList.add("show");
-            });
-            li.appendChild(btn);
-            const chaptersData = NOTES_DB[sub] || {};
-            const chaptersDiv = document.createElement("div");
-            chaptersDiv.id = `chapters-${sub}`;
-            chaptersDiv.className = `chapters-container ${activeSubject === sub ? 'show' : ''}`;
-            for (let chapName of Object.keys(chaptersData)) {
-                const chapBtn = document.createElement("button");
-                chapBtn.className = `chapter-link ${activeSubject === sub && activeChapterKey === chapName ? 'chapter-active' : ''}`;
-                chapBtn.textContent = `📄 ${chapName}`;
-                chapBtn.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    activeChapterKey = chapName;
-                    renderContent(sub, chapName);
-                    renderSidebar();
-                    const contDiv = document.getElementById(`chapters-${sub}`);
-                    if(contDiv) contDiv.classList.add("show");
-                });
-                chaptersDiv.appendChild(chapBtn);
-            }
-            li.appendChild(chaptersDiv);
-            container.appendChild(li);
-        });
-    }
-
-    // 关键修复：使用 Blob + iframe.src 代替 srcdoc，保证完整 HTML 原样显示
-    function renderContent(subject, chapter) {
-        const fullHtml = NOTES_DB[subject]?.[chapter];
-        if (!fullHtml || fullHtml === "待更新") {
-            document.getElementById("contentArea").innerHTML = `<div class="placeholder-card"><h3>📌 笔记更新中</h3><p>该章节内容即将补充完整版</p></div>`;
-            return;
+        {
+            name: "战略",
+            emoji: "🎯",
+            files: [
+                "01.html",
+                "02.html",
+                "03.html"
+            ]
         }
-        const iframe = document.createElement("iframe");
-        iframe.className = "note-iframe";
-        iframe.style.width = "100%";
-        iframe.style.minHeight = "80vh";
-        iframe.style.border = "none";
-        iframe.style.backgroundColor = "#fff";
-        // 使用 Blob URL 确保所有样式/脚本完整
-        const blob = new Blob([fullHtml], { type: "text/html" });
-        const url = URL.createObjectURL(blob);
-        iframe.src = url;
-        const container = document.getElementById("contentArea");
-        container.innerHTML = "";
-        container.appendChild(iframe);
-        iframe.onload = () => {
-            URL.revokeObjectURL(url);
-            try {
-                const doc = iframe.contentWindow.document;
-                const height = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight, doc.body.offsetHeight);
-                iframe.style.height = (height + 40) + "px";
-            } catch(e) { console.warn("height auto error", e); }
-        };
-    }
+    ];
 
-    renderSidebar();
-    renderContent("财管", "资本成本");
+    // ============================================================
+    // 以下代码自动生成目录，一般不需要修改
+    // ============================================================
+
+    function renderCategories(filterText = "") {
+        const container = document.getElementById("categoriesContainer");
+        container.innerHTML = "";
+        
+        let totalCount = 0;
+        
+        categories.forEach((cat, catIndex) => {
+            // 过滤文件
+            let filteredFiles = cat.files;
+            let hasMatch = false;
+            
+            if (filterText.trim() !== "") {
+                filteredFiles = cat.files.filter(file => {
+                    const fileName = file.replace(".html", "");
+                    return fileName.toLowerCase().includes(filterText.toLowerCase());
+                });
+                hasMatch = filteredFiles.length > 0;
+                if (!hasMatch) return; // 无匹配则跳过整个分类
+            }
+            
+            totalCount += filteredFiles.length;
+            
+            // 创建分类容器
+            const categoryDiv = document.createElement("div");
+            categoryDiv.className = "category";
+            
+            // 分类头部（可点击折叠）
+            const headerDiv = document.createElement("div");
+            headerDiv.className = "category-header";
+            headerDiv.setAttribute("data-cat-index", catIndex);
+            
+            const titleSpan = document.createElement("span");
+            titleSpan.className = "category-title";
+            titleSpan.innerHTML = `<span class="emoji">${cat.emoji}</span> ${cat.name} <span style="font-size:0.8rem; color:#888;">(${filteredFiles.length})</span>`;
+            
+            const toggleSpan = document.createElement("span");
+            toggleSpan.className = "toggle-icon";
+            toggleSpan.textContent = "▼";
+            
+            headerDiv.appendChild(titleSpan);
+            headerDiv.appendChild(toggleSpan);
+            
+            // 文件列表
+            const fileUl = document.createElement("ul");
+            fileUl.className = "file-list";
+            
+            filteredFiles.forEach(file => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                const fileBase = file.replace(".html", "");
+                // 路径：分类文件夹/文件名
+                a.href = `${cat.name}/${file}`;
+                a.innerHTML = `
+                    <span class="file-icon">📄</span>
+                    <span class="file-name">${fileBase}</span>
+                    <span class="badge">${cat.name}</span>
+                `;
+                li.appendChild(a);
+                fileUl.appendChild(li);
+            });
+            
+            categoryDiv.appendChild(headerDiv);
+            categoryDiv.appendChild(fileUl);
+            container.appendChild(categoryDiv);
+            
+            // 读取本地存储的折叠状态
+            const savedState = localStorage.getItem(`cat_collapsed_${catIndex}`);
+            if (savedState === "true") {
+                headerDiv.classList.add("collapsed");
+                fileUl.classList.add("collapsed");
+            }
+            
+            // 绑定折叠事件
+            headerDiv.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isCollapsed = headerDiv.classList.toggle("collapsed");
+                fileUl.classList.toggle("collapsed");
+                localStorage.setItem(`cat_collapsed_${catIndex}`, isCollapsed);
+            });
+        });
+        
+        // 更新底部统计
+        const footer = document.getElementById("footer");
+        footer.innerHTML = `📖 共 ${totalCount} 条笔记 · 点击分类标题可折叠/展开`;
+        
+        if (filterText.trim() !== "" && totalCount === 0) {
+            container.innerHTML = '<div class="empty-message">😢 没有找到匹配的笔记，试试其他关键词~</div>';
+            footer.innerHTML = `🔍 未找到结果 · 已清空筛选`;
+        }
+    }
+    
+    // 搜索功能
+    const searchInput = document.getElementById("searchInput");
+    let searchTimeout;
+    searchInput.addEventListener("input", function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            renderCategories(this.value);
+        }, 200);
+    });
+    
+    // 初始化渲染
+    renderCategories();
 </script>
 </body>
 </html>
