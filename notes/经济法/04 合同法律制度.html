@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPA经济法·合同法律制度｜星级梯度笔记（完整版）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f5f7fb;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, sans-serif;
+            line-height: 1.55;
+            color: #1e2a3e;
+            padding: 2rem 1rem;
+        }
+        .notebook {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            border-left: 7px solid #2c7da0;
+            padding-left: 1.2rem;
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+            color: #0b3b4f;
+        }
+        .sub {
+            color: #4a6a7f;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1f509e;
+        }
+        .badge.hot {
+            background: #ffedea;
+            color: #c2410c;
+        }
+        .badge.mid {
+            background: #fff1e0;
+            color: #b45309;
+        }
+        .badge.basic {
+            background: #e6f7ec;
+            color: #2b6e3c;
+        }
+        .badge.new {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.8rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #cbdde6;
+            font-weight: 600;
+            color: #1e4a6e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.4rem 0 0.8rem;
+            color: #2c5f7a;
+            font-weight: 600;
+            padding-left: 0.5rem;
+            border-left: 4px solid #7fafc2;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 1.2rem 0 0.5rem;
+            color: #2d4e6c;
+            font-weight: 600;
+        }
+        .star-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #fef7e0;
+            padding: 2px 10px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+        .star-3 { color: #d97706; }
+        .star-2 { color: #f59e0b; }
+        .attention-level {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8f9fc;
+            border-radius: 40px;
+            padding: 2px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+            border: 1px solid #e2e8f0;
+        }
+        .level-high { background: #fee2e2; color: #b91c1c; }
+        .level-mid { background: #fff0db; color: #b45309; }
+        .level-low { background: #e6f4ea; color: #2e6b3c; }
+        .card-case {
+            background: #fefce8;
+            border-left: 6px solid #eab308;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0;
+            border-radius: 18px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .card-law {
+            background: #f8fafc;
+            border: 1px solid #e2edf2;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+        }
+        .highlight {
+            background: #fef9e3;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-weight: 500;
+            color: #b45309;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.9rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        th {
+            background: #e9f2f5;
+            padding: 10px 12px;
+            border: 1px solid #cbdde6;
+            font-weight: 600;
+        }
+        td {
+            padding: 9px 12px;
+            border: 1px solid #dce5ec;
+            vertical-align: top;
+        }
+        .note-tip {
+            background: #eef7ff;
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        .strategy-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0 10px;
+        }
+        .strategy-card {
+            flex: 1;
+            background: #fafcff;
+            border-radius: 20px;
+            padding: 12px 16px;
+            border: 1px solid #e0edf2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        hr {
+            margin: 1.8rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #cbdde6, transparent);
+        }
+        .markdown-dl {
+            text-align: right;
+            margin-top: 2rem;
+        }
+        button {
+            background: #2c7da0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 60px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background: #1f5e7a;
+        }
+        footer {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 2rem;
+            color: #6f8faa;
+        }
+        @media (max-width: 700px) {
+            .notebook {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="notebook" id="notebookContent">
+    <h1>📖 合同法律制度 · 星级梯度笔记</h1>
+    <div class="sub">
+        <span>🔍 基于2026考纲 + 注协教材 + BT主教材｜星级标注·关注层级·案例全析</span>
+        <div class="badge-group">
+            <span class="badge hot">⭐⭐⭐ 核心必考 (买卖/借款/租赁/融资租赁/建设工程)</span>
+            <span class="badge mid">⭐⭐ 次重点 (赠与/运输)</span>
+            <span class="badge basic">📖 简单了解 (承揽/委托/行纪/技术/物业)</span>
+            <span class="badge new">🆕 2026新增/调整</span>
+        </div>
+    </div>
+
+    <!-- ========= 新增知识点：合同关注层级梯度 ========= -->
+    <div class="strategy-grid">
+        <div class="strategy-card"><strong>🔥 重点关注 (★★★)</strong><br>买卖合同 · 借款合同 · 租赁合同 · 融资租赁合同 · 建设工程合同<br><span style="font-size:0.75rem;">案例分析高频，风险转移、优先权、利率上限、买卖不破租赁、解除条件</span></div>
+        <div class="strategy-card"><strong>📌 次关注 (★★)</strong><br>赠与合同 · 运输合同<br><span style="font-size:0.75rem;">客观题+简答：任意/法定撤销，货运风险/不可抗力/托运人变更权</span></div>
+        <div class="strategy-card"><strong>📘 简单了解</strong><br>承揽合同 · 委托合同 · 行纪合同 · 技术合同 · 物业服务合同<br><span style="font-size:0.75rem;">定作人随时解除、隐名代理、行纪人介入权、职务技术成果、物业费催告禁止停水停电</span></div>
+    </div>
+
+    <!-- ========================= 考点概览 ========================= -->
+    <div class="note-tip">
+        💡 <strong>考情速览</strong>：合同法是案例分析题核心章节，近三年分值约14分。高频考查：合同的订立（要约/承诺）、抗辩权、代位权/撤销权、保证、定金、违约责任、买卖合同、租赁合同、建设工程合同等。<br>
+        🆕 <strong>2026新增/调整点</strong>：①承诺以对话方式作出的生效时间（知道内容时生效）；②招投标买卖合同补充表述（中标通知书到达时合同成立）；③格式条款解释规则细化；④撤销权诉讼中债务人与相对人为共同被告；⑤定金部分履行按比例适用罚则；⑥建设工程价款优先权行使期限18个月（原为6个月，现明确最长18个月）。
+    </div>
+
+    <!-- 考点1: 合同的基本理论 -->
+    <h2>一、合同的基本理论</h2>
+    <h3>📌 合同的分类</h3>
+    <table>
+        <tr><th>分类标准</th><th>类型</th><th>典型举例</th></tr>
+        <tr><td>立法上是否有名称</td><td>有名合同/无名合同</td><td>买卖合同（有名）；付费自习室服务合同（无名）</td></tr>
+        <tr><td>对价义务</td><td>单务合同 / 双务合同</td><td>赠与合同（单务）；买卖合同（双务）</td></tr>
+        <tr><td>成立是否需现实给付</td><td>诺成合同 / 实践合同</td><td>保管合同、自然人借贷、定金合同（实践合同）</td></tr>
+    </table>
+    <h3>🔗 合同的相对性及例外</h3>
+    <p><strong>含义：</strong>合同仅在当事人之间产生约束力，不能向无合同关系的第三人主张。<br>
+    <strong>典型例外：</strong>①合同保全（代位权、撤销权）；②买卖不破租赁；③分包人与承包人连带责任。</p>
+    <div class="card-case">
+        📘 <strong>【彬哥案例·相对性】</strong> 甲与乙签订买卖合同，约定向乙所在地交货，甲委托丙运输，因丙重大过失导致货物毁损。<span class="highlight">乙只能要求甲承担违约责任</span>，而不能直接要求丙赔偿——体现合同的相对性。例外情形（如真正的利他合同）中第三人可直接请求。
+    </div>
+
+    <h2>二、合同的订立（★★★）</h2>
+    <h3>📢 要约与承诺</h3>
+    <p><strong>要约</strong>：内容具体确定 + 表明受约束。商业广告一般属于要约邀请，但悬赏广告视为要约。<br>
+    <strong>要约邀请</strong>：拍卖公告、招标公告、招股说明书、寄送的价目表等。<br>
+    <strong>承诺</strong>：受要约人同意，对话方式作出<strong class="highlight">“相对人知道其内容时生效”</strong>（2026新增明确）；通知方式到达生效。承诺不可撤销，但可撤回。</p>
+    <div class="card-case">
+        📘 <strong>【例题·承诺迟延】</strong> 甲向乙发出要约，承诺期限7天，乙第9天发出承诺（通常不能及时到达）→ 迟延承诺，视为新要约，除非甲及时接受。若乙在期限内发出但因邮局原因迟到，除甲及时通知不接受外，承诺有效。
+    </div>
+    <h3>📝 格式条款 & 免责条款</h3>
+    <p>认定格式条款核心：<strong>不允许对方协商修改</strong>。提供方未尽提示义务，相对方可主张该条款不成为合同内容。对格式条款有两种以上解释，<strong>作出不利于提供方解释</strong>。<br>
+    免责条款无效：造成对方人身损害、因故意/重大过失造成对方财产损失。</p>
+
+    <h2>三、合同的效力 & 履行规则</h2>
+    <h3>⚙ 约定不明时的填补规则</h3>
+    <p>质量→强制国标→推荐国标→行业标准；价款→订立合同时履行地市场价格；地点→给付货币的，接受货币一方所在地；履行期限不明确，债务人可随时履行，但应给对方必要准备时间。</p>
+    <h3>🔄 涉及第三人的履行</h3>
+    <p><strong>不真正的利他合同</strong>：债务人未向第三人履行，向债权人承担违约责任。<br>
+    <strong>真正的利他合同</strong>（法律/约定+第三人未拒绝）：第三人可直接请求债务人承担违约责任（突破相对性）。<br>
+    <strong>第三人代为履行</strong>：第三人对履行具有合法利益（如次承租人），有权代付；债权人接受后债权转让给第三人。</p>
+    <div class="card-case">
+        📘 <strong>【次承租人代为履行案例】</strong> 甲将房屋出租给乙（租金3000元/月），乙转租给丙（4000元/月）。乙欠租，丙对履行具有合法利益（避免转租合同被解除），丙有权直接向甲代付。甲受领后，丙取得对乙的追偿权。
+    </div>
+
+    <h3>⚖️ 双务合同抗辩权</h3>
+    <ul>
+        <li><strong>同时履行抗辩权</strong>：无先后顺序，一方未履行可拒绝对方履行请求。</li>
+        <li><strong>先履行抗辩权</strong>：后履行方在先履行方违约时可拒绝其相应请求。</li>
+        <li><strong>不安抗辩权</strong>：应先履行一方有确切证据证明对方经营恶化、转移财产等，可中止履行；未恢复能力且未提供担保可解除合同。</li>
+    </ul>
+
+    <h2>四、合同的保全（代位权 & 撤销权）</h2>
+    <h3>🔍 债权人代位权</h3>
+    <p><strong>要件</strong>：债权合法；债务人怠于行使非专属于自身的到期债权（须以诉讼/仲裁方式怠于行使）；影响债权人债权实现。<br>
+    <strong>诉讼结构</strong>：原告（债权人）— 被告（次债务人），债务人为第三人。由被告住所地管辖。<br>
+    <strong>效果</strong>：次债务人向债权人履行，债权人具有<strong>优先受偿权</strong>。</p>
+    <h3>✖️ 债权人撤销权</h3>
+    <p>无偿处分（放弃债权、无偿转让）或明显不合理价格交易（<70%或>30%指导价）且相对人恶意，可请求撤销。撤销权行使期限：知道起1年，行为发生起5年。<br>
+    <strong>被告为债务人和相对人</strong>（共同被告），债权人无优先受偿权，财产恢复责任财产。</p>
+    <div class="note-tip">📖 新增调整：撤销权诉讼中债务人与相对人列为共同被告，由债务人/相对人住所地管辖（专属除外）。</div>
+
+    <h2>五、合同的担保（保证+定金）</h2>
+    <h3>🤝 保证方式与先诉抗辩权</h3>
+    <p>一般保证（约定不明时为一般保证）→ 保证人享有先诉抗辩权；连带责任保证须明确约定。<br>
+    先诉抗辩权例外：债务人下落不明且无财产可供执行、债务人破产、财产不足以履行、保证人书面放弃。</p>
+    <h3>📅 保证期间</h3>
+    <p>有约定从约定，无约定/约定不明为主债务履行期届满之日起<strong>6个月</strong>。期间内一般保证须对债务人起诉/仲裁，连带保证须向保证人请求，否则免责。</p>
+    <div class="card-case">
+        📘 <strong>【物保+人保并存】</strong> 甲公司向乙银行借款80万，以自有房屋抵押，丙公司连带保证。无约定时，乙银行应<strong>先就甲公司的房屋实现债权</strong>，不足部分再由丙公司承担。若物保由第三人提供，则债权人可选择顺序。
+    </div>
+    <h3>💰 定金规则（2026细化）</h3>
+    <p>实践合同，最高不得超过主合同标的额的20%，超过部分无效。定金罚则：给付方违约无权返还，收受方违约双倍返还。<br>
+    <strong>新增强调</strong>：部分履行时按未履行部分比例适用定金罚则；不可抗力不适用定金罚则；与违约金择一适用，但可同时主张赔偿超出定金的损失。</p>
+
+    <h2>六、合同的变更、转让与终止</h2>
+    <h3>📄 债权转让 & 债务承担</h3>
+    <p>债权转让：通知债务人即生效（对债务人生效要件），禁止转让的特约不得对抗善意第三人（金钱债权不得对抗任何第三人）。债务承担：须经债权人同意。<br>
+    债务加入：第三人加入承担连带债务，无需债权人同意（未明确拒绝即可）。</p>
+    <h3>⚡ 合同解除 & 提存</h3>
+    <p>法定解除情形：不可抗力致目的不实现、预期违约、经催告仍迟延、根本违约等。<br>
+    提存后风险/孳息/费用由债权人负担；债权人领取权自提存之日起<strong>5年</strong>消灭，扣除费用后归国家。</p>
+
+    <h2>七、违约责任（严格责任）</h2>
+    <p><strong>承担方式</strong>：继续履行、补救措施、赔偿损失、支付违约金、定金罚则。<br>
+    <strong>违约金调整</strong>：过分高于损失（超过造成损失30%）可请求减少；恶意违约请求减少一般不予支持。<br>
+    <strong>法定免责</strong>：不可抗力（迟延履行后发生不可抗力不免责）。<br>
+    <strong>损失赔偿额</strong>：包括履行后可获利益，但不得超过缔约时可预见损失。</p>
+    <div class="card-case">
+        📘 <strong>【违约竞合·定金+赔偿】</strong> 甲公司向乙公司购买面料总价40万元，定金10万元（超20%部分无效，8万为定金）。乙公司迟延交货致使甲损失19万元，合同目的无法实现。甲可选择定金罚则（返还18万元，其中惩罚8万），再要求赔偿损失11万元（19万-8万），两项总和≤实际损失19万元。
+    </div>
+
+    <h2>八、重点典型合同精要（附星级标注）</h2>
+    
+    <h3>🏷️ 买卖合同 <span class="star-rating star-3">★★★ 重点关注</span></h3>
+    <p><strong>风险负担</strong>：交付前出卖人承担，交付后买受人承担；在途标的物自合同成立时风险由买受人承担；需要运输且无约定交付地点，货交第一承运人后风险转移。<br>
+    <strong>分期付款</strong>：未支付到期价款达全部价款1/5，经催告后可要求支付全部价款或解除合同。</p>
+    
+    <h3>💸 借款合同 & 民间借贷 <span class="star-rating star-3">★★★ 重点关注</span></h3>
+    <p>自然人之间借贷为实践合同，自提供借款时成立。利率不得超过合同成立时一年期LPR的4倍。未约定利息视为无利息，约定不明（自然人之间）视为无利息。</p>
+    
+    <h3>🏠 租赁合同 <span class="star-rating star-3">★★★ 重点关注</span></h3>
+    <p>最长租赁期20年；6个月以上未采用书面形式且无法确定租期的，视为不定期租赁，双方可随时解除但要合理通知。<strong>买卖不破租赁</strong>。</p>
+    
+    <h3>📦 融资租赁合同 <span class="star-rating star-3">★★★ 重点关注</span></h3>
+    <p>承租人占有期间承担租赁物毁损风险；出租人一般不承担瑕疵责任（依赖出租人技能除外）。承租人欠付租金达两期以上或数额达15%以上，经催告后可解除合同。</p>
+    
+    <h3>🏗️ 建设工程合同（优先权新规） <span class="star-rating star-3">★★★ 重点关注</span></h3>
+    <p><strong>工程价款优先受偿权</strong>优于抵押权和其他债权，但不优于已付全款的商品房消费者房屋交付请求权。<br>
+    🆕 <strong>行使期限</strong>：<span class="highlight">自发包人应当给付价款之日起18个月</span>（原司法解释为6个月，现明确最长18个月）。</p>
+    <div class="card-case">
+        📘 <strong>【建设工程优先权案例】</strong> 乙公司欠付甲公司工程款15000万元，甲公司催告后仍未支付，甲公司可申请拍卖写字楼，就拍卖价款优先于A银行的抵押权受偿，但若存在已支付全部购房款的居住消费者，其房屋交付请求权 > 工程价款优先权 > 抵押权。
+    </div>
+    
+    <h3>🎁 赠与合同 <span class="star-rating star-2">★★ 次关注</span></h3>
+    <p>诺成合同，任意撤销（公益/公证/道德义务除外）；法定撤销（忘恩行为）：严重侵害、不履行扶养义务、不履行约定义务，知道起1年内撤销；继承人6个月。经济状况显著恶化可不再履行。</p>
+    
+    <h3>🚚 运输合同 <span class="star-rating star-2">★★ 次关注</span></h3>
+    <p>货运中因不可抗力、货物自然性质或合理损耗导致毁损，承运人不赔；托运人货物交付前可单方变更（中止/变更收货人），但应赔偿损失；货物因不可抗力灭失，未收运费不得收取，已收应退还。</p>
+
+    <!-- 简单了解合同群 -->
+    <h2>九、简单了解合同（承揽·委托·行纪·技术·物业）</h2>
+    <h3>🔧 承揽合同</h3>
+    <p>主要工作应由承揽人完成，经定作人同意可交由第三人，承揽人就第三人工作向定作人负责。<strong>定作人随时解除权</strong>（工作完成前解除，但应赔偿承揽人损失）。</p>
+    <h3>📄 委托合同</h3>
+    <p>有偿/无偿；双方可随时解除；转委托需经同意，紧急情况维护委托人利益可转委托；隐名代理规则；两个以上受托人连带责任。</p>
+    <h3>🏷️ 行纪合同</h3>
+    <p>行纪人以自己名义从事贸易活动，费用自行负担（另有约定除外）；行纪人介入权；委托人逾期不付报酬，行纪人对委托物享有留置权。</p>
+    <h3>🧪 技术合同</h3>
+    <p>包括技术开发、转让、许可、咨询、服务合同。<strong>职务技术成果</strong>使用权、转让权属于单位，完成人享有优先受让权；后续改进成果无约定，其他各方无权分享。</p>
+    <h3>🏢 物业服务合同</h3>
+    <p>要式合同（书面）；选聘/解聘须业主共同决定（双2/3参与，参与面积+人数双过半）。物业服务人不得将全部物业服务转委托；不得停水停电催交物业费；业主装修应事先告知并配合检查。</p>
+    <div class="card-case">
+        📘 <strong>【物业费催交】</strong> 业主逾期不支付物业费，物业服务人应先催告，合理期限届满仍不支付可提起诉讼，但不得采取停止供电、供水等方式催交。
+    </div>
+
+    <h2>十、2026新增/调整深度归纳</h2>
+    <table>
+        <tr><th>调整领域</th><th>核心内容</th></tr>
+        <tr><td>承诺生效时间</td><td>对话方式作出的承诺，相对人知道其内容时生效（同步明确数据电文规则）。</td></tr>
+        <tr><td>招投标订立合同</td><td>当事人请求确认合同自中标通知书到达中标人时成立，法院应予支持，拒绝签订书面合同不影响成立。</td></tr>
+        <tr><td>格式条款解释</td><td>格式条款和非格式条款不一致的，采用非格式条款；对两种以上解释作不利提供方解释。</td></tr>
+        <tr><td>撤销权诉讼主体</td><td>债务人和相对人为共同被告，由债务人/相对人住所地法院管辖（专属除外）。</td></tr>
+        <tr><td>定金按比例适用</td><td>部分履行合同且对方接受，可按未履行部分比例适用定金罚则；轻微违约不影响相对方适用。</td></tr>
+        <tr><td>建设工程优先权期限</td><td>自发包人应付工程价款之日起18个月（明确最长保护期）。</td></tr>
+    </table>
+
+    <h2>十一、必会案例·经典真题链接</h2>
+    <div class="card-case">
+        📘 <strong>【真题·2025案例节选·保证+物保】</strong> 甲公司借款80万，以自有房屋抵押，丙公司连带保证。后甲公司追加借款20万，丙不知情。<br>
+        <span class="highlight">(1) 乙银行无权直接要求丙公司偿还第一笔贷款</span>，因债务人自物保应先执行。<br>
+        <span class="highlight">(2) 乙银行无权要求丙偿还第二笔贷款</span>，因为加重债务未经保证人书面同意，保证人对加重部分不承担责任。
+    </div>
+    <div class="card-case">
+        📘 <strong>【代位权典型】</strong> 债权人甲，债务人乙，次债务人丙。乙对丙享有到期债权但不起诉，影响甲债权实现。甲可以自己名义起诉丙，要求丙向自己履行，胜诉后丙向甲支付，甲对丙的受偿款优先于乙的其他债权人。
+    </div>
+
+    <div class="note-tip">
+        ✅ <strong>第一轮复习重点提醒（按关注层级）</strong><br>
+        1️⃣ ★★★ 合同：相对性三大例外、买卖合同风险转移、借款利率上限、租赁买卖不破租赁、融资租赁风险归属、建设工程优先权18个月。<br>
+        2️⃣ ★★ 合同：赠与任意撤销/法定撤销、运输合同不可抗力免责及托运人变更权。<br>
+        3️⃣ 新增点：对话承诺生效规则、招投标合同成立时点、定金按比例适用、撤销权共同被告。<br>
+        4️⃣ 了解合同：定作人随时解除、隐名代理、行纪人介入权、职务技术成果、物业费催收禁止停水停电。
+    </div>
+    <hr />
+    <div style="font-size: 0.8rem; color: #4a627a;">📚 主要依据：《民法典》合同编及司法解释（法释〔2023〕13号）、《建设工程施工合同解释(一)》、《民间借贷规定》、2026年注会考试大纲。本笔记融合注协教材与BT讲义体系，案例均来自真题改编或官方教材示例。</div>
+</div>
+<div class="markdown-dl">
+    <button id="downloadMarkdownBtn">📥 下载 Markdown 笔记（含星级&关注层级）</button>
+</div>
+<footer>© 合同法律制度·星级梯度精粹 | 适用于2026 CPA 经济法备考</footer>
+
+<script>
+    function generateMarkdown() {
+        const title = "# 合同法律制度 · 星级梯度笔记 (2026考纲)";
+        const meta = "> 基于注协教材 + BT主教材 + 最新考纲，融合星级标注及合同关注层级\n\n";
+        const container = document.getElementById('notebookContent');
+        const clone = container.cloneNode(true);
+        const downloadArea = clone.querySelector('.markdown-dl');
+        if(downloadArea) downloadArea.remove();
+        let htmlContent = clone.innerHTML;
+        let md = title + "\n\n" + meta;
+        md = md + htmlContent
+            .replace(/<h1>(.*?)<\/h1>/g, '# $1\n')
+            .replace(/<h2>(.*?)<\/h2>/g, '## $1\n')
+            .replace(/<h3>(.*?)<\/h3>/g, '### $1\n')
+            .replace(/<h4>(.*?)<\/h4>/g, '#### $1\n')
+            .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
+            .replace(/<em>(.*?)<\/em>/g, '*$1*')
+            .replace(/<span class="highlight">(.*?)<\/span>/g, '`$1`')
+            .replace(/<div class="card-case">(.*?)<\/div>/gs, (match, p1) => {
+                let clean = p1.replace(/<br\s*\/?>/g, '\n').replace(/<[^>]*>/g, '');
+                return `> 📘 ${clean}\n\n`;
+            })
+            .replace(/<div class="note-tip">(.*?)<\/div>/gs, (match, p1) => {
+                let tip = p1.replace(/<br\s*\/?>/g, '\n').replace(/<[^>]*>/g, '');
+                return `💡 **提示**：${tip}\n\n`;
+            })
+            .replace(/<table[^>]*>/g, '\n')
+            .replace(/<\/table>/g, '\n')
+            .replace(/<tr>/g, '|').replace(/<\/tr>/g, '|\n')
+            .replace(/<th>(.*?)<\/th>/g, '| $1 ')
+            .replace(/<td>(.*?)<\/td>/g, '| $1 ')
+            .replace(/<thead>|<\/thead>|<tbody>|<\/tbody>/g, '')
+            .replace(/<ul>(.*?)<\/ul>/gs, (m, list) => list.replace(/<li>(.*?)<\/li>/g, '- $1\n'))
+            .replace(/<li>(.*?)<\/li>/g, '- $1\n')
+            .replace(/<p>(.*?)<\/p>/g, '$1\n\n')
+            .replace(/<br\s*\/?>/g, '\n')
+            .replace(/<\/?div[^>]*>/g, '')
+            .replace(/<hr\s*\/?>/g, '---\n')
+            .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+            .replace(/\n{3,}/g, '\n\n');
+        md = md + "\n\n---\n*笔记生成时间：" + new Date().toLocaleDateString() + " | 依据2026CPA经济法大纲及民法典合同编司法解释*";
+        return md;
+    }
+
+    document.getElementById('downloadMarkdownBtn').addEventListener('click', function() {
+        const markdownContent = generateMarkdown();
+        const blob = new Blob([markdownContent], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '合同法_星级梯度笔记.md';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+</script>
+</body>
+</html>
