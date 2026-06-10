@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPA财务管理：本量利分析 | 第一轮知识笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f7fb;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.55;
+            color: #1e2a3e;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1a4d8c, #2b6aaf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            border-left: 5px solid #1a4d8c;
+            padding-left: 1.2rem;
+        }
+        .subhead {
+            color: #4b6b8f;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #eef2ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #1e40af;
+            font-weight: 500;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin: 1.8rem 0 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid #cbdff2;
+            color: #0c4a6e;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.6rem;
+            color: #155e7e;
+            background: #f0f9ff;
+            display: inline-block;
+            padding: 0.1rem 0.8rem;
+            border-radius: 20px;
+        }
+        .highlight {
+            background: #fff7e0;
+            border-left: 4px solid #f5b042;
+            padding: 0.6rem 1rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+        .important {
+            background: #fee2e2;
+            border-left: 5px solid #dc2626;
+        }
+        .formula-card {
+            background: #f8fafc;
+            border: 1px solid #e2edf7;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', '等线', monospace;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .formula {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0b3b5f;
+            background: #eef2ff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 0.2rem 0;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        .card-note {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2edf7;
+            padding: 1rem 1.2rem;
+            transition: all 0.1s ease;
+        }
+        .tag {
+            font-size: 0.7rem;
+            background: #d9f0ec;
+            color: #0f5e53;
+            border-radius: 30px;
+            padding: 0.2rem 0.7rem;
+            display: inline-block;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
+        .new-point {
+            background: #c7f9cc;
+            color: #065f46;
+            font-weight: 600;
+        }
+        .star {
+            color: #eab308;
+        }
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6c7a8e;
+            border-top: 1px solid #eef2f8;
+            padding-top: 1.5rem;
+        }
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e466e;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-download:hover {
+            background: #0f3554;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid #cfdfed;
+            padding: 8px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #eef2fa;
+        }
+        @media (max-width: 680px) {
+            .container { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="noteContent">
+    <h1>📊 第十六章 本量利分析 · 第一轮知识笔记</h1>
+    <div class="subhead">
+        <span>📌 基于CPA《财务成本管理》教材 + BT教育讲义 + 2025考试大纲</span>
+        <span class="badge">⭐ 核心章节 | 年均分值8分左右</span>
+    </div>
+    
+    <!-- 考点地图速览 -->
+    <div class="highlight">
+        🧠 <strong>本章定位：</strong> 经营决策基石——以息税前利润(EBIT)最大化为主线，串联成本性态、变动成本法、保本保利分析、敏感分析。客观题+主观题，可与资本预算、杠杆系数、短期经营决策结合。
+    </div>
+
+    <!-- 一、混合成本分解及变动成本法 -->
+    <h2>🔍 考点一：混合成本的分解 &amp; 变动成本法</h2>
+    <p><strong>能力等级：</strong>★★ (2016,2019-2025历年考核) &nbsp;|&nbsp; 大纲要求：混合成本分解、变动成本法(七、管理会计·本量利一般关系)</p>
+    <h3>📐 1. 混合成本分解方法</h3>
+    <div class="grid-2">
+        <div class="card-note"><span class="tag">账户分析法</span>简单粗糙，根据会计账户特征划分。</div>
+        <div class="card-note"><span class="tag">工业工程法</span>无历史数据或验证时使用，标准成本制定更科学。</div>
+        <div class="card-note"><span class="tag">直线回归法</span>∑Y = na + b∑X ; ∑XY = a∑X + b∑X²</div>
+        <div class="card-note"><span class="tag">高低点法</span><br>单位变动成本 b = (高点成本-低点成本)/(高点业务量-低点业务量)<br>固定成本 a = 高点(低点)总成本 - b×高点(低点)业务量</div>
+    </div>
+    <div class="formula-card">
+        💡 <strong>总成本线性模型：</strong> Y = a + bX &nbsp;&nbsp;(固定成本 + 变动成本)
+    </div>
+    
+    <h3>📘 2. 变动成本法 vs 完全成本法</h3>
+    <table>
+        <thead><tr><th>项目</th><th>变动成本法</th><th>完全成本法</th></tr></thead>
+        <tbody>
+            <tr><td>产品成本</td><td>直接材料+直接人工+变动制造费用</td><td>直接材料+直接人工+变动制造费用+固定制造费用</td></tr>
+            <tr><td>期间费用</td><td>固定制造费用+销管费用</td><td>销管费用</td></tr>
+            <tr><td>利润关系</td><td colspan="2">完全成本法利润 = 变动成本法利润 + 期末存货固定制造费用 - 期初存货固定制造费用</td></tr>
+        </tbody>
+    </table>
+    <div class="highlight">
+        ✅ <strong>学霸笔记：</strong> 本量利分析中的“变动成本”是广义的——包括变动生产成本+变动销售管理费用。公式中边际贡献按产品边际贡献（总营业边际贡献）计算。
+    </div>
+    
+    <!-- 二、本量利基本模型 -->
+    <h2>🧮 考点二：本量利分析基本模型</h2>
+    <p><strong>四大假设：</strong> 相关范围假设 | 模型线性假设(单价、单位变动成本常数) | 产销平衡假设 | 品种结构不变假设(多品种)</p>
+    <div class="formula-card">
+        📌 <strong>核心损益方程式：</strong><br>
+        <span class="formula">息税前利润(EBIT) = 单价×销量 - 单位变动成本×销量 - 固定成本</span><br>
+        <span class="formula">= (单价 - 单位变动成本) × 销量 - 固定成本 = 边际贡献 - 固定成本</span>
+    </div>
+    <h3>📈 边际贡献方程式</h3>
+    <ul style="margin-left: 1.5rem;">
+        <li>边际贡献 = 销售收入 - 变动成本 = 销量 × 单位边际贡献</li>
+        <li>制造边际贡献 = 销售收入 - 变动生产成本 &nbsp; | &nbsp; 产品边际贡献 = 制造边际贡献 - 变动销售管理费用</li>
+        <li><strong>边际贡献率 = 边际贡献/销售收入 = 单位边际贡献/单价</strong> ; 变动成本率 + 边际贡献率 = 1</li>
+        <li>EBIT = 销售收入 × 边际贡献率 - 固定成本</li>
+        <li>多品种加权平均边际贡献率 = Σ(各产品边际贡献率 × 销售比重)</li>
+    </ul>
+    
+    <!-- 三、保本分析 -->
+    <h2>🎯 考点三：保本分析（盈亏临界点）★★★</h2>
+    <div class="grid-2">
+        <div class="card-note">
+            <span class="tag">保本量</span><br>
+            <strong>保本量 = 固定成本 / (单价 - 单位变动成本) = 固定成本 / 单位边际贡献</strong>
+        </div>
+        <div class="card-note">
+            <span class="tag">保本额</span><br>
+            <strong>保本额 = 固定成本 / 边际贡献率</strong>
+        </div>
+    </div>
+    <h3>📏 安全边际与利润</h3>
+    <ul>
+        <li>安全边际量 = 实际(预计)销售量 - 保本量 &nbsp; | &nbsp; 安全边际额 = 实际销售额 - 保本额</li>
+        <li>安全边际率 = 安全边际量(额) / 实际销售量(额)  |  盈亏临界点作业率 + 安全边际率 = 1</li>
+        <li><span class="formula">息税前利润 = 安全边际量 × 单位边际贡献 = 安全边际额 × 边际贡献率</span></li>
+        <li>销售息税前利润率 = 安全边际率 × 边际贡献率</li>
+    </ul>
+    <div class="highlight">
+        💡 <strong>多品种保本分析：</strong> 加权平均保本销售额 = 固定成本总额 / 加权平均边际贡献率；某产品保本额 = 加权平均保本额 × 该产品销售占比。
+    </div>
+    
+    <!-- 四、保利分析 -->
+    <h2>🏆 考点四：保利分析（目标利润）</h2>
+    <div class="formula-card">
+        🎯 <strong>保利量 = (固定成本 + 目标利润) / 单位边际贡献</strong><br>
+        🎯 <strong>保利额 = (固定成本 + 目标利润) / 边际贡献率</strong>
+    </div>
+    <p>适用于单一产品或多品种条件下的目标销量/销售额规划。</p>
+    
+    <!-- 五、利润敏感分析 -->
+    <h2>⚡ 考点五：利润敏感分析 ★★</h2>
+    <p><strong>核心：</strong> 各因素(单价、单位变动成本、销量、固定成本)变动引起利润变化的敏感程度。盈亏临界点求各参数极值。</p>
+    <div class="formula-card">
+        📐 <strong>敏感系数 = 目标值变动百分比 / 参数变动百分比</strong><br>
+        🧩 具体简化公式（只变动一个因素时）：<br>
+        • 单价的敏感系数 = 基期营业收入 / 基期EBIT &nbsp;=&nbsp; P×Q / EBIT<br>
+        • 单位变动成本的敏感系数 = - 基期变动成本总额 / EBIT<br>
+        • 销量的敏感系数 = 基期边际贡献 / EBIT = 经营杠杆系数<br>
+        • 固定成本的敏感系数 = - 基期固定成本 / EBIT<br>
+        ⚠️ 绝对值＞1为敏感因素，正负表示同向/反向变动。
+    </div>
+    <div class="highlight important">
+        🔥 <strong>高频结论：</strong> 单价敏感系数最高（绝对值最大）；销量敏感系数 = 经营杠杆系数；安全边际率 = 1 / 经营杠杆系数。
+    </div>
+    
+    <!-- 重要公式汇总(包括衍生) -->
+    <h2>📑 核心公式汇总 &amp; 衍生关系</h2>
+    <div class="grid-2">
+        <div class="card-note">
+            <strong>▸ 基本方程式</strong><br>
+            EBIT = (P-V)×Q - F <br>
+            EBIT = 边际贡献 - F
+        </div>
+        <div class="card-note">
+            <strong>▸ 保本点</strong><br>
+            Q<sub>0</sub> = F / (P-V) <br>
+            S<sub>0</sub> = F / 边际贡献率
+        </div>
+        <div class="card-note">
+            <strong>▸ 安全边际率</strong><br>
+            MSR = (Q<sub>实际</sub>-Q<sub>0</sub>)/Q<sub>实际</sub><br>
+            EBIT = 安全边际额 × 边际贡献率
+        </div>
+        <div class="card-note">
+            <strong>▸ 保利量/额</strong><br>
+            Q<sub>目标</sub> = (F+π)/ (P-V)<br>
+            S<sub>目标</sub> = (F+π) / 边际贡献率
+        </div>
+        <div class="card-note">
+            <strong>▸ 多品种加权边际贡献率</strong><br>
+            WACMR = Σ (CMR<sub>i</sub> × 销售比重<sub>i</sub>)<br>
+            综合保本额 = F / WACMR
+        </div>
+        <div class="card-note">
+            <strong>▸ 敏感系数关系</strong><br>
+            销量敏感系数 = DOL = 边际贡献/EBIT<br>
+            安全边际率 = 1/DOL
+        </div>
+    </div>
+    
+    <!-- 重难点 + 新增点标注 -->
+    <h2>⚠️ 本章重难点 &amp; 新增点说明</h2>
+    <div class="highlight important">
+        <span class="tag new-point">📌 2025年考纲/教材调整</span><br>
+        <strong>✅ 新增/调整内容：</strong> 根据2025考纲及教材变化，原“按成本性态分类”内容移至第十二章《成本管理会计的基础概念和基本理论》。本章聚焦混合成本分解、变动成本法、本量利核心模型。同时2025大纲在“本量利一般关系”中明确混合成本分解、变动成本法以及利润敏感分析的能力等级(2~3)。<br>
+        <strong>📖 特别关注：</strong> 变动成本法与完全成本法下利润差异（存货吸收固定制造费用）为高频计算题；多品种保本分析与保利分析结合收入比重变化；利润敏感系数的综合应用(结合安全边际率/经营杠杆)。
+    </div>
+    <div class="grid-2">
+        <div class="card-note">
+            <strong>⭐ 难点一：</strong> 完全成本法与变动成本法利润差异调节，尤其是期末/期初存货固定制造费用的计算，先进先出法下对利润的影响。
+        </div>
+        <div class="card-note">
+            <strong>⭐ 难点二：</strong> 混合成本分解中高低点法与回归法的对比，以及延期变动成本与半变动成本图形判别（固定部分是否包含业务量门槛）。
+        </div>
+        <div class="card-note">
+            <strong>⭐ 难点三：</strong> 加权平均边际贡献率在多品种保本额计算，以及安全边际率与杠杆系数之间的转换（客观题常见陷阱）。
+        </div>
+        <div class="card-note">
+            <strong>⭐ 必考综合点：</strong> 本量利分析与短期经营决策（特殊订单定价、自制外购）、资本预算中经营杠杆、以及责任会计中的内部转移定价结合命题。
+        </div>
+    </div>
+    
+    <!-- 典型例题思路提炼 -->
+    <h2>📌 真题关键模型提炼（基于BT+教材例题）</h2>
+    <ul>
+        <li><strong>【高低点法预测】</strong> 选择业务量最高最低点，求b = Δ成本/Δ工时，再计算固定成本，代入预计业务量 → 2024年机修成本测算类似题。</li>
+        <li><strong>【变动成本法与完全成本法利润调整】</strong> 差异 = 期末存货所含固定制造费用 - 期初存货固定制造费用，先进先出法需注意单位成本。</li>
+        <li><strong>【多品种边际贡献及保利门票提价】</strong> 联票收入分成50%，注意普通票与优惠票比例，涉及变动管理费(收入的10%)，层层边际贡献计算后解方程。</li>
+        <li><strong>【敏感系数及安全边际率】</strong> 利用“安全边际率=1/经营杠杆系数”，以及盈亏临界点销量 = 当前销量×(1-1/敏感系数)的灵活推导。</li>
+    </ul>
+    
+    <!-- 拓展性思维表 -->
+    <h2>🧠 彬哥学霸笔记·应试技巧</h2>
+    <table>
+        <tr><th>易混淆点</th><th>区分技巧</th></tr>
+        <tr><td>半变动成本 vs 延期变动成本</td><td>半变动成本基础固定部分不随业务量变化，延期变动在零点后跃升（有固定部分包含业务量门槛）</td></tr>
+        <tr><td>变动成本法下产品成本仅包括变动制造成本</td><td>固定制造费用全额计入期间费用；完全成本法下固定制造费用在产品存货中递延</td></tr>
+        <tr><td>边际贡献（未定语）= 产品边际贡献</td><td>= 销售收入 - 变动生产成本 - 变动销售管理费用</td></tr>
+        <tr><td>安全边际率与利润敏感性</td><td>敏感系数绝对值越大越敏感，销量敏感系数即为DOL，安全边际率×边际贡献率=销售息税前利润率</td></tr>
+    </table>
+    
+    <div class="highlight">
+        ✨ <strong>复习路径建议：</strong> ① 牢固记忆基本损益方程式和边际贡献公式；② 独立推导保本点、保利点公式，理解固定成本与边际贡献的关系；③ 动手做多品种保本计算（加权平均法）；④ 结合敏感系数计算理解参数临界值及经营杠杆。真题近5年本章平均8分，务必掌握计算大题。
+    </div>
+    
+    <footer>
+        📚 依据CPA《财务成本管理》2025考试大纲 + BT教育精讲讲义整理 | 涵盖混合成本分解、变动成本法、本量利基本模型、保本保利分析、利润敏感分析<br>
+        ⏱ 更新至2025年最新考纲内容，红色标注为高频命题区域。
+    </footer>
+</div>
+<div style="text-align: center; margin-top: 2rem;">
+    <button id="downloadMarkdown" class="btn-download">📥 下载笔记（Markdown）</button>
+</div>
+
+<script>
+    const downloadBtn = document.getElementById('downloadMarkdown');
+    downloadBtn.addEventListener('click', function() {
+        // 获取笔记内容，并转换成规范的markdown格式
+        const contentDiv = document.getElementById('noteContent');
+        // 克隆内容避免污染页面显示
+        const cloneDiv = contentDiv.cloneNode(true);
+        // 移除按钮内可能的事件冗余，但不需要复杂处理，提取html转markdown简易版
+        let htmlContent = cloneDiv.innerHTML;
+        // 转换 html -> markdown (轻量级，保留核心结构)
+        let markdown = `# 第十六章 本量利分析 · 第一轮知识笔记（CPA财务管理）\n\n`;
+        markdown += `> 基于CPA教材+BT教育+2025考试大纲 | 年均分值约8分 | 混合成本分解、本量利模型、保本保利分析、敏感分析\n\n`;
+        
+        // 简单解析h2/h3等
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+        // 递归处理元素转markdown风格
+        function elementToMarkdown(el, depth = 0) {
+            let md = '';
+            for (let node of el.childNodes) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    md += node.textContent;
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const tag = node.tagName.toLowerCase();
+                    if (tag === 'h1') {
+                        md += `# ${node.innerText.trim()}\n\n`;
+                    } else if (tag === 'h2') {
+                        md += `## ${node.innerText.trim()}\n\n`;
+                    } else if (tag === 'h3') {
+                        md += `### ${node.innerText.trim()}\n\n`;
+                    } else if (tag === 'div' && node.className.includes('formula-card')) {
+                        md += `> **公式区**： ${node.innerText.trim()}\n\n`;
+                    } else if (tag === 'div' && node.className.includes('highlight')) {
+                        md += `> 📌 ${node.innerText.trim()}\n\n`;
+                    } else if (tag === 'ul') {
+                        let items = node.querySelectorAll(':scope > li');
+                        items.forEach(li => { md += `- ${li.innerText.trim()}\n`; });
+                        md += `\n`;
+                    } else if (tag === 'ol') {
+                        let items = node.querySelectorAll(':scope > li');
+                        items.forEach((li,idx) => { md += `${idx+1}. ${li.innerText.trim()}\n`; });
+                        md += `\n`;
+                    } else if (tag === 'table') {
+                        // 简单表转换
+                        let rows = node.querySelectorAll('tr');
+                        rows.forEach((row, i) => {
+                            let cells = row.querySelectorAll('th, td');
+                            let rowText = cells.map(cell => cell.innerText.trim()).join(' | ');
+                            md += `| ${rowText} |\n`;
+                            if(i === 0) md += `|${Array(cells.length).fill(' --- ').join('|')}|\n`;
+                        });
+                        md += `\n`;
+                    } else if (tag === 'p') {
+                        md += `${node.innerText.trim()}\n\n`;
+                    } else if (tag === 'div' && node.className.includes('grid-2')) {
+                        // 粗略处理
+                        let items = node.querySelectorAll('.card-note');
+                        items.forEach(item => { md += `- ${item.innerText.trim()}\n`; });
+                        md += `\n`;
+                    } else {
+                        md += elementToMarkdown(node, depth+1);
+                    }
+                }
+            }
+            return md;
+        }
+        
+        let finalMarkdown = elementToMarkdown(tempDiv);
+        // 清理多余换行
+        finalMarkdown = finalMarkdown.replace(/\n{3,}/g, '\n\n');
+        // 增加头部说明
+        const headerNote = `**考试能力等级**：混合成本分解(2)，变动成本法(2)，保本分析(3)，保利分析(3)，敏感系数(3) | 重要公式已汇总。\n\n`;
+        finalMarkdown = headerNote + finalMarkdown;
+        // 加上额外公式附录
+        finalMarkdown += `\n---\n### 📎 附录：关键公式速记表\n`;
+        finalMarkdown += `- 息税前利润 = (P-V)Q - F = 边际贡献 - F\n`;
+        finalMarkdown += `- 保本量 = F / (P-V) ; 保本额 = F / CMR\n`;
+        finalMarkdown += `- 安全边际率 = 1 - 盈亏临界点作业率 ; 利润 = 安全边际额 × CMR\n`;
+        finalMarkdown += `- 保利量 = (F + 目标利润) / (P-V) ； 敏感系数 = Δ%参变量/Δ%因素\n`;
+        finalMarkdown += `- 经营杠杆系数 = 边际贡献/EBIT = 销量敏感系数\n`;
+        finalMarkdown += `\n> 笔记依据2025CPA大纲及BT教材第十六章，新增点已标注（成本性态分类移至十二章，本量利核心不变）。祝复习顺利！`;
+        
+        // 下载
+        const blob = new Blob([finalMarkdown], { type: 'text/markdown;charset=utf-8' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.download = 'CPA_本量利分析_第一轮笔记.md';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    });
+</script>
+</body>
+</html>
